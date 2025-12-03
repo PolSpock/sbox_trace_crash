@@ -1,6 +1,3 @@
-
-using Sandbox;
-
 public sealed class WorkerTraceCrash : Component
 {
 	protected override void OnUpdate()
@@ -17,6 +14,7 @@ public sealed class WorkerTraceCrash : Component
 					foreach ( var collider in colliders )
 					{
 						if ( !collider.IsValid() ) { continue; }
+						if ( collider.KeyframeBody == null ) { continue; }
 
 						var results = this.GameObject.Scene.PhysicsWorld.Trace.Body( collider.KeyframeBody, this.WorldPosition ).RunAll();
 					}
